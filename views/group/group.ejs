@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <title>Create Group</title>
+  <title>Group Page</title>
 </head>
 <body>
   <nav aria-label="breadcrumb">
@@ -14,21 +14,23 @@
       <li class="breadcrumb-item"><a href="#">Data</a></li>
     </ol>
   </nav>
-  <header>
-    <h1 class="container">Create Group</h1>
+  <header class="container">
+    <h1><%= groupData.group_name %> </h1>
   </header>
   <div class="container">
-    <form action="/group/add" method="POST">
-      <div class="form-group">
-        <label for="group_name">Group Name</label><br>
-        <input type="text" name="group_name" id="group_name"><br>
+    <div class="row">
+      <div class="col-8">
+        <h3>Group Posts</h3>
+        <a href=""><button class="btn btn-primary">Add Post</button></a>
       </div>
-      <button type="submit" class="btn btn-primary">Create Group</button>
-    </form>
-  </div>
-  <br>
-  <div class="container">
-    <a href="/group">Back</a>
+      <div class="col-4">
+        <h3>Group Member</h3><br>
+        <ol>
+          <li>Rizky Akbar</li> <!--Testing aja-->
+          <li>Akbar Tandjung</li>
+        </ol>
+      </div>
+    </div>
   </div>
 </body>
 </html>

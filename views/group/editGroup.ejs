@@ -3,9 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <title>Edit Group</title>
 </head>
 <body>
   <h1>Edit Group</h1>
+  <div>
+    <form method="POST">
+      <div class="form-group">
+        <label for="group_name">Group Name</label><br>
+        <input type="text" name="group_name" id="group_name" value="<%= groupData.group_name %>"><br>
+      </div>
+      <button type="submit" class="btn btn-primary">Update Group</button>
+    </form>
+  </div>
+  <br>
+  <div>
+    <a href="/group">Back</a>
+  </div>
 </body>
 </html>
