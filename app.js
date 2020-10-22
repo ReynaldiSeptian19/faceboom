@@ -17,6 +17,8 @@ app.use(session({
 }))
 
 app.use("/static/public/",express.static('publics'))
+app.use('/static/public/',express.static('public'))
+
 // app.use((req, res, next)=>{
 
 // next()

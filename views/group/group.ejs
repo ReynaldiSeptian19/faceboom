@@ -25,9 +25,9 @@
         <div class="text-center">
           <% img.forEach(el => { %>
             <figure>
-              <img src="pictures/<%= el.post %>" alt="pic" width="400px">
+              <img src="/static/public/pictures/<%=el.post%>" alt="pic" width="400px">
               <figcaption><%= el.comment %></figcaption>
-              <a href="/content/delete/<%= el.id %>"><button class="btn btn-primary">Delete Post</button></a>
+              <br>
             </figure>
           <% }) %> 
         </div>
