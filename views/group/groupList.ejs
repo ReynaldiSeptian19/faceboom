@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <title>Group List</title>
+</head>
+<body>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#">Home</a></li>
+      <li class="breadcrumb-item"><a href="/group">Group List</a></li>
+      <li class="breadcrumb-item"><a href="#">Data</a></li>
+    </ol>
+  </nav>
+  <header class="container">
+    <h1>Group List</h1>
+  </header>
+  <div class="container">
+    <table border="1" class="table table-striped">
+      <thead class="text-center">
+        <tr>
+          <td>Group Id</td>
+          <td>Group Name</td>
+          <td>Created</td>
+          <td>Members</td>
+          <td>Actions</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% groupData.forEach(el => { %>
+          <tr>
+            <td class="text-center"><%= el.id %></td>
+            <td><%= el.group_name %></td>
+            <td><%= el.createdAt.toLocaleString() %></td>
+            <td>Belum diisi sementara</td>
+            <td class="text-center">
+              <a href="/group/edit/<%= el.id %>"><button class="btn btn-primary">Edit</button></a>
+              <a href="/group/delete/<%= el.id %>"><button class="btn btn-primary">Delete</button></a>
+              <a href="/group/<%= el.id %>"><button class="btn btn-primary">Visit Group</button></a>
+            </td>
+          </tr>
+        <% }) %> 
+      </tbody>
+    </table>
+  </div>
+  <div class="container">
+    <a href="/group/add">Add Group</a>
+  </div>
+</body>
+</html>
