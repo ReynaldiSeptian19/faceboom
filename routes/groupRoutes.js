@@ -11,6 +11,10 @@ const router = require('express').Router()
 //     }
 // })
 
+// const upload = multer({
+//   storage: storage
+// }).single('post')
+
 router.get('/', GroupController.showGroup)
 router.get('/add', GroupController.addForm)
 router.post('/add', GroupController.add)
