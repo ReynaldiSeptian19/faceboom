@@ -9,13 +9,8 @@
 <body>
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-<<<<<<< HEAD
-      <li class="breadcrumb-item"><a href="/">Home</a></li>
-      <li class="breadcrumb-item"><a href="/group">Group List</a></li>
-=======
       <h2><a href="/">Faceboom</a></h2>
       <h5 style="padding-top: 10px; padding-left: 20px;"><a href="/group">Group List</a></h5>
->>>>>>> 7cfd4db6dd317b7284289b85e891b042c8e40a56
     </ol>
   </nav>
   <header class="container">
@@ -28,24 +23,22 @@
           <td>Group Id</td>
           <td>Group Name</td>
           <td>Created</td>
-          <td>Members</td>
           <td>Actions</td>
         </tr>
       </thead>
       <tbody>
-        <% groupData.forEach(el => { %>
+        <% for (let i = 0; i < groupData.length; i++) { %>
           <tr>
-            <td class="text-center"><%= el.id %></td>
-            <td><%= el.group_name %></td>
-            <td><%= el.createdAt.toLocaleString() %></td>
-            <td>Belum diisi sementara</td>
+            <td class="text-center"><%= groupData[i].id %></td>
+            <td><%= groupData[i].group_name %></td>
+            <td><%= converted[i] %></td>
             <td class="text-center">
-              <a href="/group/edit/<%= el.id %>"><button class="btn btn-primary">Edit</button></a>
-              <a href="/group/delete/<%= el.id %>"><button class="btn btn-primary">Delete</button></a>
-              <a href="/group/<%= el.id %>"><button class="btn btn-primary">Visit Group</button></a>
+              <a href="/group/edit/<%= groupData[i].id %>"><button class="btn btn-primary">Edit</button></a>
+              <a href="/group/delete/<%= groupData[i].id %>"><button class="btn btn-primary">Delete</button></a>
+              <a href="/group/<%= groupData[i].id %>"><button class="btn btn-primary">Visit Group</button></a>
             </td>
           </tr>
-        <% }) %> 
+        <% } %> 
       </tbody>
     </table>
   </div>

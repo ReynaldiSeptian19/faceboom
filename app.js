@@ -5,7 +5,6 @@ const session = require('express-session')
 const port = 3000
 
 
-app.use('/',express.static('public'))
 
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({extended: true}))
@@ -16,6 +15,8 @@ app.use(session({
     saveUninitialized: true,
     cookie: {}
   }))
+
+app.use('/static/public/',express.static('public'))
 
 // app.use((req, res, next)=>{
 
