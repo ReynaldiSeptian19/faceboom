@@ -77,8 +77,9 @@ class GroupController {
     let id = +req.params.id
     Group.findByPk(id, {include: Content})
     .then(groupData => {
-      console.log(groupData.Contents[0].post, "<< ini post")
+      console.log(groupData.Contents[0].post)
       let img = groupData.Contents
+      console.log(img, "<< ini img")
       res.render('./group/group.ejs', {groupData, img})
     })
     .catch(err => {
