@@ -3,8 +3,7 @@ const routes = require('./routes/index')
 const app = express()
 const session = require('express-session')
 const port = 3000
-const multer = require('multer')
-const path = require('path')
+
 
 app.use('/',express.static('public'))
 

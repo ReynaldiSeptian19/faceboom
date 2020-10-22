@@ -1,4 +1,4 @@
-const { Group } = require('../models/index')
+const { Group, Content } = require('../models/index')
 
 class GroupController {
   static showGroup(req, res) {
@@ -83,9 +83,12 @@ class GroupController {
 
   static groupPage(req, res) {
     let id = +req.params.id
-    Group.findByPk(id)
+    Group.findByPk(id, {include: Content})
     .then(groupData => {
-      res.render('./group/group.ejs', {groupData})
+      console.log(groupData.Contents[0].post)
+      let img = groupData.Contents
+      console.log(img, "<< ini img")
+      res.render('./group/group.ejs', {groupData, img})
     })
     .catch(err => {
       res.send(err)
