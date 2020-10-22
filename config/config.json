@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "postgres",
-    "password": "kingstone10",
+    "password": "postgre",
     "database": "faceboom",
     "host": "127.0.0.1",
     "dialect": "postgres"
