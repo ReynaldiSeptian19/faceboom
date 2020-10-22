@@ -9,21 +9,30 @@
 <body>
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="#">Home</a></li>
+      <li class="breadcrumb-item"><a href="/">Home</a></li>
       <li class="breadcrumb-item"><a href="/group">Group List</a></li>
-      <li class="breadcrumb-item"><a href="#">Data</a></li>
     </ol>
   </nav>
   <header class="container">
-    <h1><%= groupData.group_name %> </h1>
+    <h1><%= groupData.group_name %></h1>
   </header>
   <div class="container">
     <div class="row">
-      <div class="col-8">
+      <div class="col-10">
+        <br>
         <h3>Group Posts</h3>
-        <a href=""><button class="btn btn-primary">Add Post</button></a>
+        <a href="/group/<%= groupData.id %>/addContent"><button class="btn btn-primary">Add Content</button></a><br>
+        <div class="text-center">
+          <% img.forEach(el => { %>
+            <figure>
+              <img src="<%= el.post %>" alt="pic" width="400px">
+              <figcaption><%= el.comment %></figcaption>
+              <a href="/content/delete/<%= el.id %>"><button class="btn btn-primary">Delete Post</button></a>
+            </figure>
+          <% }) %> 
+        </div>
       </div>
-      <div class="col-4">
+      <div class="col-2">
         <h3>Group Member</h3><br>
         <ol>
           <li>Rizky Akbar</li> <!--Testing aja-->

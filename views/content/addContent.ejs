@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <title>Edit Group</title>
+  <title>Add Content</title>
 </head>
 <body>
   <nav aria-label="breadcrumb">
@@ -12,20 +12,25 @@
       <li class="breadcrumb-item"><a href="/">Home</a></li>
       <li class="breadcrumb-item"><a href="/group">Group List</a></li>
     </ol>
+  </nav>
   <header>
-    <h1>Edit Group</h1>
+    <h1 class="container">Add Content</h1>
   </header>
-  <div>
+  <div class="container">
     <form method="POST">
       <div class="form-group">
-        <label for="group_name">Group Name</label><br>
-        <input type="text" name="group_name" id="group_name" value="<%= groupData.group_name %>"><br>
+        <label for="post">URL</label><br>
+        <input type="text" name="post" id="post"><br>
       </div>
-      <button type="submit" class="btn btn-primary">Update Group</button>
+      <div class="form-group">
+        <label for="comment">Comments</label><br>
+        <textarea name="comment" id="comment" cols="30" rows="4"></textarea><br>
+      </div>
+      <button type="submit" class="btn btn-primary">Add Content</button>
     </form>
   </div>
   <br>
-  <div>
+  <div class="container">
     <a href="/group">Back</a>
   </div>
 </body>
