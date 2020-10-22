@@ -13,7 +13,11 @@ class GroupController {
   }
 
   static addForm(req, res) {
-    res.render('./group/addGroup.ejs')
+    if(req.session.isLoggedIn === true){
+      res.render('./group/addGroup.ejs')
+    }else{
+      res.redirect('/login')
+    }
   }
 
   static add(req, res) {
@@ -30,6 +34,7 @@ class GroupController {
   }
 
   static editForm(req, res) {
+    if(req.session.isLoggedIn === true){
     let id = +req.params.id
     Group.findByPk(id)
     .then(groupData => {
@@ -38,6 +43,9 @@ class GroupController {
     .catch(err => {
       res.send(err)
     })
+  }else{
+    res.redirect('/login')
+  }
   }
 
   static edit(req, res) {

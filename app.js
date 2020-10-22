@@ -3,18 +3,10 @@ const routes = require('./routes/index')
 const app = express()
 const session = require('express-session')
 const port = 3000
-// const multer = require('multer')
+const multer = require('multer')
+const path = require('path')
 
-// const storage = multer.diskStorage({
-//     destination: './pictures/',
-//     filename: function(req, file, callback){
-//         callback(null,file.fieldname + '-' + Date.now() + path.extname(file.originalname))
-//     }
-// })
-
-// const upload = multer({
-//     storage: storage
-// }).single('profilePict')
+app.use('/',express.static('public'))
 
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({extended: true}))
