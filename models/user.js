@@ -28,8 +28,14 @@ module.exports = (sequelize, DataTypes) => {
     age: DataTypes.INTEGER,
     profile_pict: DataTypes.STRING
   }, {
+    hooks:{
+      beforeCreate: (instance, options)=>{
+        instance.name += " c'yank c'lalu"
+      }
+    },
     sequelize,
     modelName: 'User',
   });
+
   return User;
 };

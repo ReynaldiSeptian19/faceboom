@@ -4,6 +4,7 @@ const UserController = require('../controllers/UserController')
 const {User} = require("../models/index")
 const multer = require('multer')
 const path = require('path')
+const logedIn = require('../middleware/login')
 
 //multer
 const storage = multer.diskStorage({
@@ -25,7 +26,7 @@ const upload = multer({
     }
 })
 
-router.get('/',UserController.readUser)
+router.get('/',logedIn,UserController.readUser)
 router.get('/login',UserController.login)
 router.post('/login',UserController.postLogin)
 router.get('/logout',UserController.logout)
@@ -42,23 +43,28 @@ router.post('/editName',UserController.postEditName)
 router.get('/editUsername',UserController.getEditUsername)
 router.post('/editUsername',UserController.postEditUsername)
 
-// router.get('/editPassword',UserController.getEditPassword)
-// router.post('/editPassword',UserController.postEditPassword)
+router.get('/editPassword',UserController.getEditPassword)
+router.post('/editPassword',UserController.postEditPassword)
 
-// router.get('/editAge',UserController.getEditAge)
-// router.post('/editAge',UserController.postEditAge)
+router.get('/editAge',UserController.getEditAge)
+router.post('/editAge',UserController.postEditAge)
 
 router.get('/editProfilePicture',UserController.getEditProfilePicture)
 router.post('/editProfilePicture', upload.single('ProfilePict'),(req,res)=>{
-    let obj = {
-        ProfilePict: req.file.filename
-    }
-    console.log(req.file);
-    User.update(obj)
-    .then(()=>{
+    let username = req.session.username
+    req.session.profile_pict = req.file.filename
+    User.findOne({
+        where:{
+            username
+        }
+    })
+    .then(data=>{
+        data.profile_pict = req.file.filename
+        data.save()
         res.redirect('/')
     })
     .catch(err =>{
+        console.log(err)
         res.send(err)
     })
 })

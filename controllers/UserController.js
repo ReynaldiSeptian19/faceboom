@@ -2,40 +2,18 @@ const {User, Post} = require("../models/index")
 
 class Controller{
     static readUser(req,res){
-        if(req.session.isLoggedIn === true){
-            // console.log(req.session)
             res.render('user',{
                 name:req.session.name,
                 age:req.session.age,
                 pict:req.session.profile_pict
-            })
-        }else{
+            })        
             res.redirect("/login")
-        }
-        // User.findAll({
-        //     include: Post
-        // })
-        // .then(data =>{
-        //     // console.log(data)
-        //     res.render("user",{user:data})
-        // })
-        // .catch(err =>{
-        //     res.send(err)
-        // })
     }
 
     static login(req,res){
-        if(req.query.err){
-            res.render('login',{
-                errorLogin: true
-            })
-        }else{
-            res.render('login',{
-                errorLogin: false
-            })
-        }
+        res.render('login',{
+        })
     }
-
 
     static postLogin(req,res){
         let requsername = req.body.username
@@ -159,7 +137,7 @@ class Controller{
       }
 
       static logout(req, res){
-        console.log(req.session)
+        // console.log(req.session)
         req.session.destroy((err)=>{
             if(err){
                 res.send(err)
@@ -174,7 +152,64 @@ class Controller{
             pict:req.session.profile_pict
         })
     }
+
+    static getEditPassword(req, res){
+        if(req.session.isLoggedIn === true){
+            res.render('editPassword',{
+                password:req.session.password
+            })
+            }else{
+                res.redirect('/login')
+            }
+    }
+
+    static postEditPassword(req, res) {
+        let username = req.session.username
+        req.session.password = req.body.password
+        let obj = {
+         password: req.body.password
+        }
+        User.update(obj, {
+          where: {
+            username: username
+          },
+        })
+        .then(() => {
+          res.redirect('/setting')
+        })
+        .catch(err => {
+          res.send(err)
+        })
+      }
+
+    static getEditAge(req, res){
+    if(req.session.isLoggedIn === true){
+        res.render('editage',{
+            age:req.session.age
+        })
+        }else{
+            res.redirect('/login')
+        }
+      }
     
+      static postEditAge(req, res) {
+        let username = req.session.username
+        req.session.age = req.body.age
+        let obj = {
+         age: req.body.age
+        }
+        User.update(obj, {
+          where: {
+            username: username
+          },
+        })
+        .then(() => {
+          res.redirect('/setting')
+        })
+        .catch(err => {
+          res.send(err)
+        })
+      }
 }
 
 module.exports = Controller
