@@ -1,0 +1,31 @@
+{
+  "name": "faceboom",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ReynaldiSeptian19/faceboom.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ReynaldiSeptian19/faceboom/issues"
+  },
+  "homepage": "https://github.com/ReynaldiSeptian19/faceboom#readme",
+  "dependencies": {
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "multer": "^1.4.2",
+    "pg": "^8.4.1",
+    "sequelize": "^6.3.5"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^6.2.0"
+  }
+}

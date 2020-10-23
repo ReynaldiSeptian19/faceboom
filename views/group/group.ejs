@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <title>Group Page</title>
+</head>
+<body>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <h2><a href="/">Faceboom</a></h2>
+      <h5 style="padding-top: 10px; padding-left: 20px;"><a href="/group">Group List</a></h5>
+    </ol>
+  </nav>
+  <header class="container">
+    <h1><%= groupData.group_name %></h1>
+  </header>
+  <div class="container">
+    <div class="row">
+      <div class="col-10">
+        <br>
+        <h3>Group Posts</h3>
+        <a href="/group/<%= groupData.id %>/addContent"><button class="btn btn-primary">Add Content</button></a><br>
+        <div class="text-center">
+          <% img.forEach(el => { %>
+            <figure>
+              <img src="/static/public/pictures/<%=el.post%>" alt="pic" width="400px">
+              <figcaption><%= el.comment %></figcaption>
+              <br>
+            </figure>
+          <% }) %> 
+        </div>
+      </div>
+      <div class="col-2">
+        <h3>Group Member</h3><br>
+        <ol>
+        </ol>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

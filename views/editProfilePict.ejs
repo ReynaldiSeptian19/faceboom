@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <title>Edit Profile Picture</title>
+</head>
+<body>
+  <header>
+    <h1 class="container">Edit Profile Picture</h1>
+  </header>
+  <div class="container">
+    <form action="/editProfilePicture" enctype="multipart/form-data" method="POST">
+      <div class="form-group">
+        <label for="ProfilePict">Name</label><br>
+        <input type="file" name="ProfilePict" id="ProfilePict" value="<%=pict%>"><br>
+      </div>
+      <button type="submit" class="btn btn-primary">Edit Pict</button>
+    </form>
+  </div>
+  <br>
+  <div class="container">
+    <a href="/setting">Back</a>
+  </div>
+</body>
+</html>
