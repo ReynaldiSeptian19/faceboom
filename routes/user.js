@@ -1,7 +1,7 @@
 let express = require('express')
 const router = express.Router()
 const UserController = require('../controllers/UserController')
-const {User} = require("../models/index")
+const {User, Post} = require("../models/index")
 const multer = require('multer')
 const path = require('path')
 const logedIn = require('../middleware/login')
@@ -69,5 +69,24 @@ router.post('/editProfilePicture', upload.single('ProfilePict'),(req,res)=>{
     })
 })
 
-// router.get('/delete',User.delete)
+// router.get('/addPost', UserController.addPost)
+// router.post('/addPost', upload.single('Post'),(req, res) => {
+//     let username = req.session.username
+//     let id = req.session.id
+//     req.session.post = req.file.filename
+//   let data = {
+//     picts:req.file.filename,
+//     UserId:id
+//   }
+//   Post.create(data)
+//     .then(() => {
+//       res.redirect(`/`)
+//     })
+//     .catch(err => {
+//       res.send(err)
+//     })
+// })
+
+router.get('/delete',UserController.delete)
+
 module.exports = router

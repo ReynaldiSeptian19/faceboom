@@ -5,7 +5,8 @@ class Controller{
             res.render('user',{
                 name:req.session.name,
                 age:req.session.age,
-                pict:req.session.profile_pict
+                pict:req.session.profile_pict,
+                // post:req.session.post
             })        
             res.redirect("/login")
     }
@@ -23,20 +24,25 @@ class Controller{
             where:{
                 username: requsername,
                 password: reqpassword
-            }
+            },
+            include: Post
         })
         .then(data =>{
-            // console.log(data)
+            console.log(data)
             if(data === null){
                 res.redirect('/login?err=true')
             }
             else{
                 req.session.isLoggedIn = true
+                // req.session.id = data.id
                 req.session.name = data.name
                 req.session.profile_pict = data.profile_pict
                 req.session.age = data.age
                 req.session.username = data.username
                 req.session.password = data.password
+                // for(let i = 0; i<data.Posts.length; i++){
+                //     req.session.post = data.Posts[i]
+                // }
                 res.redirect('/')
             }
         })
@@ -210,6 +216,21 @@ class Controller{
           res.send(err)
         })
       }
+
+    static delete(req, res){
+        let username = req.session.username
+        User.destroy({
+            where:{
+                username
+            }
+        })
+        .then(result =>{
+            res.redirect('logout')
+        })
+        .catch(err=>{
+            res.send(err)
+        })
+    }
 }
 
 module.exports = Controller
