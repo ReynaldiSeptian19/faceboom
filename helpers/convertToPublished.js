@@ -3,7 +3,7 @@ function convertToAgo(date) {
   let output
   if(ago < 60) {
     output = ago
-    return `${output} second(s) ago`
+    return `${output} second(s) agos`
   }
   else if(ago >= 60 && ago < 3600) {
     output = Math.floor(ago/60)
